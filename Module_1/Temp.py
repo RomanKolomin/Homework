@@ -1,0 +1,6 @@
+my_string = input("Введите строку: ")
+print(len(my_string))
+count = int(len(my_string))
+print(type(count))
+print('Количество символов: ', count)
+print(f'Количество символов: {count} ')
