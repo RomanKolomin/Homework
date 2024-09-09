@@ -1,6 +1,2 @@
-my_string = input("Введите строку: ")
-print(len(my_string))
-count = int(len(my_string))
-print(type(count))
-print('Количество символов: ', count)
-print(f'Количество символов: {count} ')
+set_ = {2, 3, 4, 5, 1, 2, 3 , "String", True, (1, 2, 3, 4)}
+print(set_)
