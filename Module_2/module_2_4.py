@@ -18,17 +18,3 @@ if 1 in primes:
 
 print(f'Primes: {primes}')
 print(f'Not Primes: {not_primes}')
-
-
-
-
-
-
-
-# for i in range(len(numbers)):
-#     if numbers[i] < 10:
-#
-#
-#
-#
-#         print(numbers[i])
