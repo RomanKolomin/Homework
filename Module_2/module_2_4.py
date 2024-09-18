@@ -2,16 +2,16 @@ numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 primes = []
 not_primes = []
 
-for i in range(len(numbers)):
+for n in numbers:
     is_prime = True
-    for j in range(2, numbers[i]):
-        if numbers[i] % j == 0 :
+    for div in range(2, n // 2 + 1):
+        if n % div == 0:
             is_prime = False
             break
     if is_prime:
-        primes.append(numbers[i])
+        primes.append(n)
     else:
-        not_primes.append(numbers[i])
+        not_primes.append(n)
 
 if 1 in primes:
     primes.remove(1)

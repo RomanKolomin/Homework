@@ -4,12 +4,12 @@ left_num_correct = True
 possible_pairs = []
 code = []
 
-# Checking if left_num is correct and making it int
+# Checking if left_num correct and making it int
 try:
     left_num = int(left_num)
 except ValueError:
     left_num_correct = False
-if left_num not in left_num_possible_options or left_num_correct == False:
+if left_num not in left_num_possible_options or left_num_correct is False:
     print(f'Шифр: "{left_num}" введён неверно!')
 else:
     left_num = int(left_num)
@@ -32,4 +32,4 @@ else:
     print()
     print('Введенный шифр: ', left_num)
     print('Пары чисел: ', possible_pairs)
-    print('Введите пароль: ',code)
+    print('Введите пароль: ', code)
