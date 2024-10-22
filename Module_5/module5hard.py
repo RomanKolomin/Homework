@@ -10,15 +10,6 @@ class User:
     def show_info(self):
         return print(self.nickname, self.password, self.age)
 
-    def return_name(self):
-        return self.nickname
-
-    def return_password(self):
-        return self.password
-
-    def return_age(self):
-        return int(self.age)
-
 
 class Video:
     def __init__(self, title, duration, time_now=0, adult_mode=False):
@@ -46,7 +37,7 @@ class UrTube:
     def log_in(self, nickname, password):
         if nickname not in self.users:
             print(f'Пользователь {nickname} не найден')
-        elif User.return_password(self.users[nickname]) == hash(password):
+        elif self.users[nickname].password == hash(password):
             self.current_user = nickname
             # print(f'Пользователь {nickname} зашел в систему')
         else:
@@ -80,12 +71,12 @@ class UrTube:
             pass
         elif not self.current_user:
             print("Войдите в аккаунт, чтобы смотреть видео")
-        elif (User.return_age(self.users[self.current_user]) < 18
-                and Video.return_adult_mode(self.videos[title])):
+        elif (self.users[self.current_user].age < 18
+                and self.videos[title].adult_mode):
             print("Вам нет 18 лет, пожалуйста покиньте страницу")
         else:
             current_time = 0
-            for second in range(Video.return_duration(self.videos[title])):
+            for second in range(self.videos[title].duration):
                 sleep(1)
                 current_time += 1
                 print(current_time, " ", end='')
