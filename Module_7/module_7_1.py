@@ -21,7 +21,6 @@ class Shop:
         info = self.get_products()
         file = open(self.__file_name, 'a')
         for product in products:
-            # if str(product) in info:
             if str(product) in info:
                 print(f'Продукт {str(product)} уже есть в магазине')
             else:
