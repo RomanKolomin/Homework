@@ -11,15 +11,11 @@ def introspection_info(obj):
     dict_ = {}
     type_ = str(type(obj)).replace("<class '", "").replace("'>", "").replace("__main__.", "")
     try:
-        attributes = vars(obj)
-    except:
-        attributes = []
-    try:
         module = obj.__module__
     except:
         module = '__main__'
     dict_.update({'type': type_,
-                  'attributes': attributes,
+                  'attributes': [attribute for attribute in dir(obj) if not callable(getattr(obj, attribute))],
                   'methods': [method for method in dir(obj) if callable(getattr(obj, method))],
                   'module': module})
     return dict_
