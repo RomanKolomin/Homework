@@ -21,16 +21,59 @@ def create_database():
     connection.close()
 
 
+def initiate_db():
+    connection = sqlite3.connect("database.db")
+    cursor = connection.cursor()
+
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS Users(
+    id INTEGER PRIMARY KEY,
+    username TEXT NOT NULL,
+    email TEXT NOT NULL,
+    age INTEGER NOT NULL,
+    balance INTEGER NOT NULL
+    );
+    ''')
+
+    connection.commit()
+    connection.close()
+
+
 def get_all_products():
     connection = sqlite3.connect("database.db")
     cursor = connection.cursor()
 
-    cursor.execute("SELECT * FROM Products")
-    all_product = cursor.fetchall()
+    all_product = cursor.execute("SELECT * FROM Products").fetchall()
 
     connection.close()
     return all_product
 
 
+def check_user():
+    connection = sqlite3.connect("database.db")
+    cursor = connection.cursor()
+
+    users_registred = cursor.execute("SELECT username FROM Users")
+    message = ""
+    for user in users_registred:
+        message += f' {user[0]} \n'
+
+    connection.close()
+    return message
+
+
+def add_user(username, email, age):
+    connection = sqlite3.connect("database.db")
+    cursor = connection.cursor()
+    is_included = cursor.execute("SELECT * FROM Users WHERE username=?", (username,))
+
+    if is_included:
+        cursor.execute(f"INSERT INTO Users (username, email, age, balance) VALUES ('{username}', '{email}', '{age}', 1000)")
+
+    connection.commit()
+    connection.close()
+
+
 if __name__ == "__main__":
     create_database()
+    initiate_db()
